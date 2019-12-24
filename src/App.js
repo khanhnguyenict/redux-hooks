@@ -1,25 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import {useDispatch} from 'react-redux';
 
 
 function App(){
-  const counter = useSelector(state =>state)
+  const num = useSelector(state =>state.num)
+  const isloading = useSelector(state => state.isloading);
   const dispatch = useDispatch();
 
   return(
     <>
     <p>
-    hihi :   {counter.num}
+    hihi :   {num}
     </p>
+    <h4 style={isloading ? {display:'block'} : 'none'}>is loading</h4>
     <button onClick={()=>dispatch({
-      type :'INCREMENT',
-      step:1
+      type :'INCREMENT'
     })}>INCREMENT</button>
     <button onClick={()=> dispatch(
       {
-        type: 'DECREMENT',
-        step: 1
+        type: 'DECREMENT'
       }
     )}>
       DECREMENT

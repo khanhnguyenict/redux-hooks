@@ -3,19 +3,19 @@ const initialState = {
     isloading: true
 }
 
-function reducer(state = initialState, action) {
+function countReducer(state = initialState, action) {
     switch (action.type) {
         case 'INCREMENT':
             const dataIncrement = {
                 ...state,
-                num: state.num + action.step,
-                isloading: false
+                num: 0,
+                isloading: true
             }
             return dataIncrement;
-        case 'DECREMENT':
+        case 'INCREMENT_SUCCESS':
             const dataDecrement = {
                 ...state,
-                num: state.num - action.step,
+                num:  action.step,
                 isloading: false
             }
             return dataDecrement;
@@ -24,4 +24,4 @@ function reducer(state = initialState, action) {
     }
 }
 
-export default reducer;
+export default countReducer;
