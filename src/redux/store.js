@@ -6,7 +6,7 @@ import {
   createStore,
   applyMiddleware
 } from "redux";
-import rootEpic from "./root";
+import rootEpic from "./epics/root";
 
 
 const epicMiddleware = createEpicMiddleware();
