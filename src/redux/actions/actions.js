@@ -1,7 +1,9 @@
 import {
     ADD_TODO,
     TOGGLE_TODO,
-    SET_FILTER
+    SET_FILTER,
+    ADD_USER,
+    ADD_ARTICLE
 } from "./actionTypes";
 
 
@@ -27,3 +29,22 @@ export const setFilter = filter => ({
         filter
     }
 })
+//
+
+let userId = 0;
+export const addUser = name => ({
+    type: ADD_USER,
+    payload: {
+        id: ++userId,
+        name: `User ${userId}`
+    }
+});
+//
+let articleId = 0;
+export const addArticle = name => ({
+    type: ADD_ARTICLE,
+    payload: {
+        id: ++articleId,
+        name: `Article ${articleId}`
+    }
+});

@@ -1,4 +1,3 @@
-import countReducer from "./reducer";
 import {
   createEpicMiddleware
 } from 'redux-observable';
@@ -7,6 +6,7 @@ import {
   applyMiddleware
 } from "redux";
 import rootEpic from "./epics/root";
+import rootReducer from './reducers/index';
 
 
 const epicMiddleware = createEpicMiddleware();
@@ -14,7 +14,7 @@ const epicMiddleware = createEpicMiddleware();
 export default function configureStore() {
   //create store
   const store = createStore(
-    countReducer,
+    rootReducer,
     applyMiddleware(epicMiddleware)
   );
 
