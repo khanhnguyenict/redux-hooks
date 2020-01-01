@@ -10,14 +10,7 @@ const addReducer = (reducer, section) => (state, action) => {
     }
     return reducer(state, action);
 }
-// const addReducer = function (reducer, section) {
-//     return function (state, action) {
-//         if (action.type === `ADD_${section}`) {
-//             return [...state, action.payload]
-//         }
-//         return reducer(state, action);
-//     }
-// }
+
 
 
 
