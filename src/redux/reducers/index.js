@@ -3,7 +3,7 @@ import {
 } from "redux";
 import users from './users';
 import articles from './articles';
-// higher order reducer
+
 const addReducer = (reducer, section) => (state, action) => {
     if (action.type === `ADD_${section}`) {
         return [...state, action.payload]
@@ -17,5 +17,3 @@ const rootReducer = combineReducers({
 
 })
 export default rootReducer;
-
-//test git
