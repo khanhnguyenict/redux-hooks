@@ -11,9 +11,6 @@ const addReducer = (reducer, section) => (state, action) => {
     return reducer(state, action);
 }
 
-
-
-
 const rootReducer = combineReducers({
     users: addReducer(users, 'USER'),
     articles: addReducer(articles, 'ARTICLE')
