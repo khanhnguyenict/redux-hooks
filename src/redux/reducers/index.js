@@ -36,5 +36,3 @@ const rootReducer = combineReducers({
 
 })
 export default rootReducer;
-
-//test git
