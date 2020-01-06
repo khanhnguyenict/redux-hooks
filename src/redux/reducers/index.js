@@ -11,9 +11,7 @@ const addReducer = (reducer, section) => (state, action) => {
         return [...state, payload]
     }
     if (type === `SUB_${section}`) {
-        console.log('state1: ', state)
         const data = [...state.filter(item => item.id !== payload.id)];
-        console.log('data:', data);
           return data;
       }
     return reducer(state, action);
@@ -24,7 +22,9 @@ const getReducer = (reducer, section) => (state, action) => {
     if (type === `GET_${section}`) {
         return [...state, payload]
     }
-   
+    if (type === `GET_${section}_SUCCESS`) {
+        return [...state, payload]
+    }
     return reducer(state, action);
 }
 
@@ -32,7 +32,7 @@ const getReducer = (reducer, section) => (state, action) => {
 const rootReducer = combineReducers({
     users: addReducer(users, 'USER'),
     articles: addReducer(articles, 'ARTICLE'),
-    libraries : getReducer(downloads, '')
+    downloads: getReducer(downloads, 'DOWNLOAD')
 
 })
 export default rootReducer;

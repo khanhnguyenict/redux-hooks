@@ -4,6 +4,9 @@ import {
   addUser,
   subUser,
 } from "./../redux/actions/actions";
+import {
+  getDownload
+} from './../redux/actions/downloadAction';
 import { useSelector, useDispatch } from "react-redux";
 import {
   useState,
@@ -11,8 +14,10 @@ import {
 } from 'react';
 
 const App = () => {
+  const state = useSelector(state => state);
+console.log('state: ', state);
     const users = useSelector(state => state.users);
-    // const articles = useSelector(state => state.articles);
+    // const download = useSelector(state => state.download);
     const dispatch = useDispatch();
 
     const [inputValue, setInputValue] = useState('');
@@ -25,8 +30,7 @@ const App = () => {
   }
   useEffect(() => {
     console.log('render');
-    // return () => {
-    // };
+    dispatch(getDownload())
   }, []);
   return (
     <div>
