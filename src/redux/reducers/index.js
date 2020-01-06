@@ -4,7 +4,7 @@ import {
 import users from './users';
 import articles from './articles';
 import downloads from "./downloads";
-// higher order reducer
+
 const addReducer = (reducer, section) => (state, action) => {
     const { type, payload } = action;
     if (type === `ADD_${section}`) {
