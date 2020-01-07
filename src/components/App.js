@@ -1,54 +1,37 @@
 import * as React from "react";
-// import { connect } from "react";
-import {
-  addUser,
-  subUser,
-} from "./../redux/actions/actions";
-import {
-  getDownload
-} from './../redux/actions/downloadAction';
-import { useSelector, useDispatch } from "react-redux";
-import {
-  useState,
-  useEffect
-} from 'react';
+import { getDownload } from "./../redux/actions/downloadAction";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import { useEffect } from "react";
 
 const App = () => {
-  const state = useSelector(state => state);
-console.log('state: ', state);
-    const users = useSelector(state => state.users);
-    // const download = useSelector(state => state.download);
-    const dispatch = useDispatch();
+  // use dispatch
+  const dispatch = useDispatch();
+  const { downloads = [] } = useSelector(
+    state => ({
+      users: state.users,
+      downloads: state.downloadLibraryInfo.data.downloads
+    }),
+    shallowEqual
+  );
+  const countTotalDownload = (downloads = []) =>
+    downloads.reduce((total, currentItem) => total + currentItem.downloads, 0);
 
-    const [inputValue, setInputValue] = useState('');
-  const onChangeHandler = event => {
-    setInputValue(event.target.value);
-  };
-  const summitForm = () => {
-    dispatch(addUser(inputValue));
-    setInputValue('');
-  }
   useEffect(() => {
-    console.log('render');
-    dispatch(getDownload())
+    console.log('render!!!');
+    dispatch(getDownload());
+ 
   }, []);
+
   return (
     <div>
-      <input
-        type="text"
-        name="name"
-        placeholder='enter your user name'
-        onChange={onChangeHandler}
-        value={inputValue}
-      />
-      <button onClick={summitForm}> Add User </button>
-      {users.map(user => <div key={user.id}>
-        console.log('hihi');
-
-        <p> User Name : {user.name}</p>
-        <button onClick={() => dispatch(subUser(user.id))}>  Remove User</button>
-        </div>
-      )}
+      <p> Total downloads : {countTotalDownload(downloads)}</p>
+      {downloads.map(item => (
+        <>
+          <h1 key={item.day}> Download : {item.downloads} --- 
+           Day : {item.day}
+           </h1>
+        </>
+      ))}
     </div>
   );
 };

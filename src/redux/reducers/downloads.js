@@ -1,1 +1,8 @@
-export default (state = []) => state;
+
+let initialState = {
+    isloading : false,
+    data :{}
+}
+
+
+export default (state = initialState) => state;
