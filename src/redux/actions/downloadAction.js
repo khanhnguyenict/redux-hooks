@@ -7,15 +7,22 @@ import {
 
 export const getDownload = isloading => ({
     type: GET_DOWNLOAD,
-    isloading: isloading
+   payload:{
+    isloading: true,
+    data: {}
+   }
 });
 
-export const getDownloadSuccess = payload => ({
+export const getDownloadSuccess = response => ({
     type: GET_DOWNLOAD_SUCCESS,
-    payload
+    payload: {
+        isloading: false,
+        data: response
+    }
 });
 
 export const getDownloadFailed = payload => ({
     type: GET_DOWNLOAD_FAILED,
-    payload
+    isloading: false,
+    data: payload
 });
