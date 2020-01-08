@@ -25,7 +25,7 @@ export const downloadEpic = action$ =>
     ofType(GET_DOWNLOAD),
     switchMap(() =>
       from(downloadService.getDownload()).pipe(
-        map(response => getDownloadSuccess(response))
+        map(response =>  getDownloadSuccess(response))
       ))
   )
 

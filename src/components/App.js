@@ -25,8 +25,8 @@ const App = () => {
 
   return (
     <div>
-      {/* <p> Total downloads : {countTotalDownload(downloads)}</p>
-      {downloads.map(item => (
+      <p> Total downloads : {countTotalDownload(downloads)}</p>
+      {/* {downloads.map(item => (
         <>
           <h1 key={item.day}> Download : {item.downloads} --- 
            Day : {item.day}
