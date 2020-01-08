@@ -2,6 +2,7 @@ import * as React from "react";
 import { getDownload } from "./../redux/actions/downloadAction";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { useEffect } from "react";
+import Login from './Login'
 
 const App = () => {
   // use dispatch
@@ -24,14 +25,15 @@ const App = () => {
 
   return (
     <div>
-      <p> Total downloads : {countTotalDownload(downloads)}</p>
+      {/* <p> Total downloads : {countTotalDownload(downloads)}</p>
       {downloads.map(item => (
         <>
           <h1 key={item.day}> Download : {item.downloads} --- 
            Day : {item.day}
            </h1>
         </>
-      ))}
+      ))} */}
+      <Login/>
     </div>
   );
 };
