@@ -2,7 +2,12 @@ import * as React from "react";
 import { getDownload } from "./../redux/actions/downloadAction";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { useEffect } from "react";
-import Login from './Login'
+// import Login from './Login';
+import { Table } from "antd";
+import "antd/dist/antd.css";
+import { Spin } from "antd";
+
+const { Column } = Table;
 
 const App = () => {
   // use dispatch
@@ -18,23 +23,21 @@ const App = () => {
     downloads.reduce((total, currentItem) => total + currentItem.downloads, 0);
 
   useEffect(() => {
-    console.log('render!!!');
     dispatch(getDownload());
- 
   }, []);
 
   return (
-    <div>
-      <p> Total downloads : {countTotalDownload(downloads)}</p>
-      {/* {downloads.map(item => (
-        <>
-          <h1 key={item.day}> Download : {item.downloads} --- 
-           Day : {item.day}
-           </h1>
-        </>
-      ))} */}
-      <Login/>
-    </div>
+    <>
+      <h1>Total downloads : {countTotalDownload(downloads)}</h1>
+      {downloads.length && (
+        <Table dataSource={downloads}>
+          <Column title="Total per day" dataIndex="downloads" key="downloads" />
+          <Column title="Day" dataIndex="day" key="day" />
+        </Table>
+      )}
+      {!downloads.length && <Spin />}
+    </>
   );
 };
+
 export default App;
