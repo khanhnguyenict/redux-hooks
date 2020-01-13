@@ -1,6 +1,7 @@
 import {
   switchMap,
-  map
+  map,
+  catchError
 } from 'rxjs/operators';
 import {
   ofType
@@ -9,7 +10,8 @@ import {
   GET_DOWNLOAD,
 } from "../actions/actionTypes";
 import {
-  getDownloadSuccess
+  getDownloadSuccess,
+  getDownloadFailed
 } from '../actions/downloadAction';
 
 import axios from 'axios';
@@ -26,7 +28,8 @@ export const downloadEpic = action$ =>
     switchMap(() =>
       from(downloadService.getDownload()).pipe(
         map(response =>  getDownloadSuccess(response))
-      ))
+      )),
+      catchError(error => getDownloadFailed(error))
   )
 
 export default downloadEpic;

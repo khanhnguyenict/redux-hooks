@@ -25,11 +25,19 @@ const getReducer = (reducer, section) => (state, action) => {
         type,
         payload
     } = action;
-    if (type === `GET_${section}`) {
-        return {...state, ...payload};
-    }
-    if (type === `GET_${section}_SUCCESS`) {
-        return {...state, ...payload};
+    console.log('====state==== :', state)
+    // if (type === `GET_${section}`) {
+    //     return {...state, ...payload};
+    // }
+    // if (type === `GET_${section}_SUCCESS`) {
+    //     return {...state, ...payload};
+    // }
+    // if (type === `GET_${section}_FAILED`) {
+    //     return {...state, ...payload};
+    // }
+    if(type.includes(`GET_${section}`)){
+        console.log('====state==== :', state)
+        return {...state, ...payload}
     }
     return reducer(state, action);
 }
