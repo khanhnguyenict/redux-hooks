@@ -7,7 +7,6 @@ const App = () => {
   return (
     <Router>
       <div>
-        <h1>Test</h1> 
         <Route component={Login} path="/login" exact /> 
         <Route component={User} path="/user" /> 
 

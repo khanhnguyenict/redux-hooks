@@ -25,7 +25,6 @@ const getReducer = (reducer, section) => (state, action) => {
         type,
         payload
     } = action;
-    console.log('====state==== :', state)
     // if (type === `GET_${section}`) {
     //     return {...state, ...payload};
     // }
@@ -36,7 +35,6 @@ const getReducer = (reducer, section) => (state, action) => {
     //     return {...state, ...payload};
     // }
     if(type.includes(`GET_${section}`)){
-        console.log('====state==== :', state)
         return {...state, ...payload}
     }
     return reducer(state, action);

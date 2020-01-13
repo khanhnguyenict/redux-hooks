@@ -37,6 +37,8 @@ export default function User() {
   }
   return (
     <>
+   <h3>User Page</h3>
+
       <form onSubmit={handleSumit}>
         <input ref={inputRef} />
       </form>
