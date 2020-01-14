@@ -3,7 +3,11 @@ import { useForm } from "react-hook-form";
 import "../login-style.css";
 
 export default function Login() {
-  const { handleSubmit, register, errors } = useForm();
+  const {
+    handleSubmit,
+    register,
+    errors,
+  } = useForm();
   const onSubmit = values => {
     console.log(values);
   };
@@ -16,10 +20,7 @@ export default function Login() {
         <input name="email" ref={register(ValidateForm.email)} />
         {errors.email && <p> {errors.email.message}</p>}
         <label>Password</label>
-        <input
-          name="password"
-          ref={register(ValidateForm.password)}
-        />
+        <input name="password" ref={register(ValidateForm.password)} />
         {errors.password && <p>{errors.password.message}</p>}
         <input type="submit" />
       </form>
@@ -37,8 +38,8 @@ export const ValidateForm = {
   password: {
     required: "Required",
     pattern: {
-      value:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/,
-      message: "Invalid password"
+      value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/,
+      message: "password must be contain digits, alphabet, ..."
     }
   }
 };

@@ -6,15 +6,17 @@ export default function User() {
   const [items, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case "add":
-          return [...state, {
-              id : state.length,
-              name : action.name
-          }]
-        case 'remove':
-            const data = state.filter(item => item.id !== action.id);
-            return data;
+        return [
+          ...state,
+          {
+            id: state.length,
+            name: action.name
+          }
+        ];
+      case "remove":
+        const data = state.filter(item => item.id !== action.id);
+        return data;
       default:
-
         return state;
     }
   }, []);
@@ -37,16 +39,21 @@ export default function User() {
   }
   return (
     <>
-   <h3>User Page</h3>
+      <h3>User Page</h3>
 
       <form onSubmit={handleSumit}>
         <input ref={inputRef} />
       </form>
       <ul>
         {items.map(item => (
-            <div key = {item.id}>
-          <li>{item.name}</li>
-          <button  onClick={()=> removeItem(item.id)}> Remove item</button>
+          <div key={item.id}>
+            <li>
+              {item.name}
+              <button type="button" onClick={() => removeItem(item.id)}>
+                {" "}
+                Remove item
+              </button>
+            </li>
           </div>
         ))}
       </ul>
