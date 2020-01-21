@@ -4,6 +4,7 @@ import Login from './Login';
 import User from './User';
 import sample from "./context-api/sample";
 import AnyComponent from "./context-api/any-component";
+import AlertText from './custom-hooks/text'
 
 const App = () => {
   return (
@@ -13,6 +14,10 @@ const App = () => {
         <Route component={User} path="/" exact/> 
         <Route component={sample} path="/context" exact /> 
         <Route component={AnyComponent} path="/any" exact /> 
+        <Route component={()=> <AlertText text='Hello'/>} path="/text" exact 
+        
+        /> 
+
 
 
 
